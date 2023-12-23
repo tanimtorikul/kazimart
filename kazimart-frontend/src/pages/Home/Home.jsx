@@ -1,5 +1,9 @@
+import MainBanner from "../../components/Banners/MainBanner";
+
 const Home = () => {
-  return <div>this is kazimart</div>;
+  return <div>
+    <MainBanner/>
+  </div>;
 };
 
 export default Home;

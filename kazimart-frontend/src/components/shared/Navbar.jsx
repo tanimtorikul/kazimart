@@ -21,7 +21,8 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <NavLink
+     <li>
+     <NavLink
         to="/shop"
         style={({ isActive, isPending }) => {
           return {
@@ -32,6 +33,20 @@ const Navbar = () => {
       >
         Shop
       </NavLink>
+     </li>
+     <li>
+     <NavLink
+        to="/categories"
+        style={({ isActive, isPending }) => {
+          return {
+            fontWeight: isActive ? "bold" : "",
+            color: isPending ? "red" : "#103178",
+          };
+        }}
+      >
+        Categories
+      </NavLink>
+     </li>
       <li>
         <NavLink
           to="/contact"
@@ -87,16 +102,16 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <a className="text-[#395CA7] font-bold text-2xl">Kazimart</a>
+        <Link to='/' className="text-[#395CA7] font-bold text-2xl">Kazimart</Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className=" menu-horizontal px-1 text-lg">{navlinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="flex gap-6 text-2xl text-[#FF9923]">
+        <div className="flex gap-6 text-[22px] text-[#FF9923]">
           <FaRegHeart />
           <FiShoppingCart />
-          <FaRegUser />
+         <Link to='/login'>  <FaRegUser /></Link>
         </div>
       </div>
     </div>

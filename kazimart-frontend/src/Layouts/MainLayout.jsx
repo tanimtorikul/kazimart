@@ -9,13 +9,13 @@ const MainLayout = () => {
         <Navbar />
         <div className="border-b"></div>
       </div>
-     
+
       <div className="py-8 px-2 md:px-0 min-h-screen">
         <Outlet />
       </div>
-     <div className="max-w-[1280px] mx-auto">
-     <Footer />
-     </div>
+      <div className="max-w-[1280px] mx-auto">
+        <Footer />
+      </div>
     </div>
   );
 };

@@ -21,32 +21,32 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-     <li>
-     <NavLink
-        to="/shop"
-        style={({ isActive, isPending }) => {
-          return {
-            fontWeight: isActive ? "bold" : "",
-            color: isPending ? "red" : "#103178",
-          };
-        }}
-      >
-        Shop
-      </NavLink>
-     </li>
-     <li>
-     <NavLink
-        to="/categories"
-        style={({ isActive, isPending }) => {
-          return {
-            fontWeight: isActive ? "bold" : "",
-            color: isPending ? "red" : "#103178",
-          };
-        }}
-      >
-        Categories
-      </NavLink>
-     </li>
+      <li>
+        <NavLink
+          to="/shop"
+          style={({ isActive, isPending }) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              color: isPending ? "red" : "#103178",
+            };
+          }}
+        >
+          Shop
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/categories"
+          style={({ isActive, isPending }) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              color: isPending ? "red" : "#103178",
+            };
+          }}
+        >
+          Categories
+        </NavLink>
+      </li>
       <li>
         <NavLink
           to="/contact"
@@ -102,7 +102,9 @@ const Navbar = () => {
             {navlinks}
           </ul>
         </div>
-        <Link to='/' className="text-[#395CA7] font-bold text-2xl">Kazimart</Link>
+        <Link to="/" className="text-[#395CA7] font-bold text-2xl">
+          Kazimart
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className=" menu-horizontal px-1 text-lg">{navlinks}</ul>
@@ -111,7 +113,10 @@ const Navbar = () => {
         <div className="flex gap-6 text-[22px] text-[#FF9923]">
           <FaRegHeart />
           <FiShoppingCart />
-         <Link to='/login'>  <FaRegUser /></Link>
+          <Link to="/login">
+            {" "}
+            <FaRegUser />
+          </Link>
         </div>
       </div>
     </div>

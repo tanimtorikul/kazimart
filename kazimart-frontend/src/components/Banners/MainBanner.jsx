@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MainBanner = () => {
   return (
-    <div className="bg-[#DAECFA] min-h-[600px] py-4 flex justify-around items-center">
+    <div className="bg-[#DAECFA] min-h-[600px] py-4 flex flex-col-reverse md:flex-row justify-around items-center">
       <div>
         <h2>Banner text will be uploaded from admin panel</h2>
         <Link>

@@ -57,9 +57,23 @@ const Navbar = () => {
             };
           }}
         >
+          Blogs
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/contact"
+          style={({ isActive, isPending }) => {
+            return {
+              fontWeight: isActive ? "bold" : "",
+              color: isPending ? "red" : "#103178",
+            };
+          }}
+        >
           Contact Us
         </NavLink>
       </li>
+     
       <li>
         <NavLink
           to="/about"

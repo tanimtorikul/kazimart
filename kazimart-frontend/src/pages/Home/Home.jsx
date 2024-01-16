@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import MainBanner from "../../components/Banners/MainBanner";
 import Categories from "../../components/Categories/Categories";
+import PromoBanner from "../../components/Banners/PromoBanner";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <title>Home | Kazimart</title>
       </Helmet>
       <MainBanner />
+      <PromoBanner/>
       <Categories />
     </div>
   );

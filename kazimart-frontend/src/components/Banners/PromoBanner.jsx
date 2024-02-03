@@ -20,10 +20,11 @@ function PromoBanner() {
         },
       },
     ],
+    
   };
 
   return (
-    <Slider className="max-w-[1400px] mx-auto my-12 slick-slider" {...settings}>
+    <Slider className="md:max-w-[1400px] mx-auto my-2 slick-slider" {...settings}>
       <div className="px-2">
         <img
           src="https://i.ibb.co/6rCYnSG/Black-and-Yellow-Minimalist-E-Commerce-Store-Burning-Mercado-Shops-Banner.png"

@@ -10,7 +10,7 @@ const MainLayout = () => {
         <div className="border-b"></div>
       </div>
 
-      <div className="py-8 px-2 md:px-0 min-h-screen">
+      <div className="max-w-[1400px] mx-auto py-8 px-2 md:px-0 min-h-screen">
         <Outlet />
       </div>
       <div className="max-w-[1280px] mx-auto">

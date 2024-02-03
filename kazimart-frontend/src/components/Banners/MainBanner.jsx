@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const MainBanner = () => {
   return (
-    <div className="bg-[#DAECFA] min-h-[600px] py-4 flex flex-col-reverse md:flex-row justify-around items-center">
+    <div className="bg-[#DAECFA] min-h-[300px] md:min-h-[600px] py-4 flex flex-col-reverse md:flex-row justify-around items-center">
       <div>
-        <h2>Banner text will be uploaded from admin panel</h2>
+        {/* <h2>Banner text will be uploaded from admin panel</h2> */}
         <Link>
           <button className="bg-teal-500 text-white px-4 py-2 text-2xl rounded">
             Shop Now

@@ -1,9 +1,26 @@
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaRegHeart } from "react-icons/fa";
+import { FaRegHeart, FaRegUser } from "react-icons/fa";
 import { FiShoppingCart } from "react-icons/fi";
-import { FaRegUser } from "react-icons/fa6";
+import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+  const [showLogout, setShowLogout] = useState(false);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        // Hide the logout button after successful logout
+        setShowLogout(false);
+      })
+      .catch((error) => {});
+  };
+
+  const toggleLogout = () => {
+    setShowLogout(!showLogout);
+  };
+
   const navlinks = (
     <ul className="flex items-center space-x-4">
       <li>
@@ -73,7 +90,6 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
-     
       <li>
         <NavLink
           to="/about"
@@ -89,6 +105,7 @@ const Navbar = () => {
       </li>
     </ul>
   );
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -127,10 +144,31 @@ const Navbar = () => {
         <div className="flex gap-6 text-[22px] text-[#FF9923]">
           <FaRegHeart />
           <FiShoppingCart />
-          <Link to="/login">
-            {" "}
-            <FaRegUser />
-          </Link>
+          {user ? (
+            <div
+              className="relative inline-block text-left"
+              onClick={toggleLogout}
+            >
+              <div>
+                <img
+                  src={user.photoURL}
+                  alt="User"
+                  className="h-8 w-8 rounded-full cursor-pointer"
+                />
+              </div>
+              {showLogout && (
+                <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                  <div className="py-1">
+                    <a onClick={handleLogOut}>Logout</a>
+                  </div>
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link to="/login" className="text-[22px] text-[#FF9923]">
+              <FaRegUser />
+            </Link>
+          )}
         </div>
       </div>
     </div>

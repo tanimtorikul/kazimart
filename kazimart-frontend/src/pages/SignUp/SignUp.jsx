@@ -2,8 +2,11 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import SocialLogin from "../Login/SocialLogin";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
+  const { createUser } = useAuth();
+ 
   const {
     register,
     handleSubmit,
@@ -11,8 +14,12 @@ const SignUp = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    createUser(data.email, data.password).then((result) => {
+      const loggedUser = result.user;
+      console.log(loggedUser);
+    });
   };
+  
 
   return (
     <div className="flex flex-col justify-center md:min-h-[700px] items-center py-4 md:py-0">
@@ -84,6 +91,15 @@ const SignUp = () => {
               />
               {errors.password?.type === "required" && (
                 <p className="text-red-500">Password is required</p>
+              )}
+              {errors.password?.type === "maxLength" && (
+                <p className="text-red-500">Password must be 6 characters</p>
+              )}
+              {errors.password?.type === "minLength" && (
+                <p className="text-red-500">Password must be less than 20 characters</p>
+              )}
+              {errors.password?.type === "pattern" && (
+                <p className="text-red-500">Password must be one lower case, one upper case and one special character</p>
               )}
             </div>
           </div>

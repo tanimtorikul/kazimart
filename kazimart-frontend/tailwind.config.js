@@ -7,10 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        jost: ['Jost', 'sans-serif'],
+        poppins: ['Poppins', 'sans-serif'],
       },
     },
   },
   plugins: [require("daisyui")],
 }
-

@@ -1,59 +1,52 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+import { useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Autoplay } from "swiper/modules";
 
 function PromoBanner() {
-  var settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2000,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-    
-  };
+  const [banners, setBanners] = useState([]);
+
+  useEffect(() => {
+    const fetchBanners = async () => {
+      try {
+        const res = await fetch("banners.json");
+        const data = await res.json();
+        setBanners(data);
+      } catch (error) {
+        console.log("error");
+      }
+    };
+    fetchBanners();
+  }, []);
 
   return (
-    <Slider className="md:max-w-[1400px] mx-auto my-2 slick-slider" {...settings}>
-      <div className="px-2">
-        <img
-          src="https://i.ibb.co/6rCYnSG/Black-and-Yellow-Minimalist-E-Commerce-Store-Burning-Mercado-Shops-Banner.png"
-          alt="Slide 1"
-          className="w-full h-auto rounded-md "
-        />
-      </div>
-      <div className="px-2">
-        <img
-          src="https://i.ibb.co/LzVTrjZ/Banner-black-friday-webshop-ecommerce-promotion.png"
-          alt="Slide 2"
-          className="w-full h-auto rounded-md "
-        />
-      </div>
-      <div className="px-2">
-        <img
-          src="https://i.ibb.co/LzVTrjZ/Banner-black-friday-webshop-ecommerce-promotion.png"
-          alt="Slide 3"
-          className="w-full h-auto rounded-md "
-        />
-      </div>
-      <div className="px-2">
-        <img
-          src="https://i.ibb.co/LzVTrjZ/Banner-black-friday-webshop-ecommerce-promotion.png"
-          alt="Slide 4"
-          className="w-full h-auto rounded-md "
-        />
-      </div>
-    </Slider>
+    <Swiper
+      speed={1000}
+      autoplay={{ delay: 2000, disableOnInteraction: false }}
+      spaceBetween={20}
+      modules={[Autoplay]}
+      className="mySwiper"
+      breakpoints={{
+        640: {
+          slidesPerView: 3,
+        },
+        0: {
+          slidesPerView: 1,
+        },
+      }}
+    >
+      {banners.map((banner, id) => (
+        <SwiperSlide key={id} className="pt-4 md:pt-8">
+          <div className="md:h-[200px]">
+            <img
+              className="object-cover w-full h-full"
+              src={banner.imgUrl}
+              alt=""
+            />
+          </div>
+        </SwiperSlide>
+      ))}
+    </Swiper>
   );
 }
 

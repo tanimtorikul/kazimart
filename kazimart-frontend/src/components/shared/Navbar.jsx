@@ -7,18 +7,24 @@ import useAuth from "../../hooks/useAuth";
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const [showLogout, setShowLogout] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogOut = () => {
     logOut()
       .then(() => {
-        // Hide the logout button after successful logout
         setShowLogout(false);
       })
-      .catch((error) => {});
+      .catch((error) => {
+        console.error("Logout error:", error);
+      });
   };
 
   const toggleLogout = () => {
     setShowLogout(!showLogout);
+  };
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
   };
 
   const navlinks = (
@@ -66,7 +72,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/contact"
+          to="/blogs"
           style={({ isActive, isPending }) => {
             return {
               fontWeight: isActive ? "bold" : "",
@@ -109,8 +115,13 @@ const Navbar = () => {
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+        <div className="dropdown lg:hidden">
+          <button 
+            onClick={toggleMenu} 
+            className="btn btn-ghost" 
+            aria-haspopup="true"
+            aria-expanded={menuOpen}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -125,41 +136,40 @@ const Navbar = () => {
                 d="M4 6h16M4 12h8m-8 6h16"
               />
             </svg>
-          </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            {navlinks}
-          </ul>
+          </button>
+          {menuOpen && (
+            <ul
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              onMouseLeave={() => setMenuOpen(false)} // Close on mouse leave
+            >
+              {navlinks}
+            </ul>
+          )}
         </div>
         <Link to="/" className="text-[#395CA7] font-bold text-2xl">
           Kazimart
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className=" menu-horizontal px-1 text-lg">{navlinks}</ul>
+        <ul className="menu-horizontal px-1 text-lg">{navlinks}</ul>
       </div>
       <div className="navbar-end">
         <div className="flex gap-6 text-[22px] text-[#FF9923]">
           <FaRegHeart />
           <FiShoppingCart />
           {user ? (
-            <div
-              className="relative inline-block text-left"
-              onClick={toggleLogout}
-            >
-              <div>
-                <img
-                  src={user.photoURL}
-                  alt="User"
-                  className="h-8 w-8 rounded-full cursor-pointer"
-                />
-              </div>
+            <div className="relative inline-block text-left" onClick={toggleLogout}>
+              <img
+                src={user.photoURL}
+                alt="User"
+                className="h-8 w-8 rounded-full cursor-pointer"
+              />
               {showLogout && (
                 <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                   <div className="py-1">
-                    <a onClick={handleLogOut}>Logout</a>
+                    <a onClick={handleLogOut} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                      Logout
+                    </a>
                   </div>
                 </div>
               )}

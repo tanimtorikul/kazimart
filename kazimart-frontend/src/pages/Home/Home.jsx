@@ -2,8 +2,6 @@ import { Helmet } from "react-helmet-async";
 import MainBanner from "../../components/Banners/MainBanner";
 import Categories from "../../components/Categories/Categories";
 import PromoBanner from "../../components/Banners/PromoBanner";
-import PopularItems from "../../components/PopularItems/PopularItems";
-import LatestProducts from "../../components/LatestProducts/LatestProducts";
 
 const Home = () => {
   return (
@@ -12,10 +10,10 @@ const Home = () => {
         <title>Home | Kazimart</title>
       </Helmet>
       <MainBanner />
-      <PromoBanner/>
+      <PromoBanner />
       <Categories />
-      <PopularItems/>
-      <LatestProducts/>
+      {/* <PopularItems/>
+      <LatestProducts/> */}
     </div>
   );
 };

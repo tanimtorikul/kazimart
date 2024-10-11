@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const CategoryCard = ({ category }) => {
   return (
     <div className="bg-white border-2 hover:border-green-600  rounded-3xl overflow-hidden transition-transform duration-200 transform hover:scale-105">

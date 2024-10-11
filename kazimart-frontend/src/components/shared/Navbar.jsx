@@ -1,3 +1,4 @@
+import logo from '../../assets/kazimart.png'
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
@@ -113,7 +114,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar">
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
           <button 
@@ -140,14 +141,17 @@ const Navbar = () => {
           {menuOpen && (
             <ul
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              onMouseLeave={() => setMenuOpen(false)} // Close on mouse leave
+              onMouseLeave={() => setMenuOpen(false)}
             >
               {navlinks}
             </ul>
           )}
         </div>
-        <Link to="/" className="text-[#395CA7] font-bold text-2xl">
-          Kazimart
+        <Link to="/">
+        <img
+            className="w-32"
+            alt="" src={logo}
+          />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

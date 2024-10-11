@@ -20,33 +20,35 @@ function PromoBanner() {
   }, []);
 
   return (
-    <Swiper
-      speed={1000}
-      autoplay={{ delay: 2000, disableOnInteraction: false }}
-      spaceBetween={20}
-      modules={[Autoplay]}
-      className="mySwiper"
-      breakpoints={{
-        640: {
-          slidesPerView: 3,
-        },
-        0: {
-          slidesPerView: 1,
-        },
-      }}
-    >
-      {banners.map((banner, id) => (
-        <SwiperSlide key={id} className="pt-4 md:pt-8">
-          <div className="md:h-[200px]">
-            <img
-              className="object-cover w-full h-full"
-              src={banner.imgUrl}
-              alt=""
-            />
-          </div>
-        </SwiperSlide>
-      ))}
-    </Swiper>
+    <div className="max-w-[1400px] mx-auto"> 
+      <Swiper
+        speed={1000}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        spaceBetween={20}
+        modules={[Autoplay]}
+        className="mySwiper"
+        breakpoints={{
+          640: {
+            slidesPerView: 3,
+          },
+          0: {
+            slidesPerView: 1,
+          },
+        }}
+      >
+        {banners.map((banner, id) => (
+          <SwiperSlide key={id} className="pt-4 md:pt-8">
+            <div className="md:h-[200px]">
+              <img
+                className="object-contain  w-full h-full"
+                src={banner.imgUrl}
+                alt=""
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
   );
 }
 

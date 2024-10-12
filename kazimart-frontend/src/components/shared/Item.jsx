@@ -21,13 +21,13 @@ const Item = ({ item }) => {
             </h2>
           </div>
         </div>
-        {/* Heart Icon */}
+        {/* Heart Icon
         <div className="absolute top-1 right-2">
           <FaRegHeart className="text-3xl border border-gray-300 rounded-full p-1 text-gray-700" />
-        </div>
+        </div> */}
         {/* Shopping Cart Icon */}
-        <div className="absolute top-10 right-2">
-          <FiShoppingCart className="text-3xl border border-gray-300 rounded-full p-1 text-gray-700" />
+        <div className="absolute top-2  right-2">
+          <FiShoppingCart className="text-3xl shadow-2xl border border-gray-300 rounded-lg p-1 text-gray-700" />
         </div>
       </div>
 

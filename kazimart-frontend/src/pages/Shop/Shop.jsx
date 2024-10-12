@@ -1,8 +1,10 @@
+import { Link } from "react-router-dom";
 import Item from "../../components/shared/Item";
 import useProducts from "../../hooks/useProducts";
 
 const Shop = () => {
   const [items] = useProducts();
+
   return (
     <div>
       <div className="max-w-[1400px] mx-auto bg-teal-500 my-2 py-24 text-white">
@@ -13,10 +15,11 @@ const Shop = () => {
           neque aperiam eos!
         </p>
       </div>
-      <div></div>
-      <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-6 gap-4">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
         {items.map((item) => (
-          <Item key={item.id} item={item}></Item>
+          <Link to={`/shop/${item.id}`} key={item.id}>
+            <Item item={item}></Item>
+          </Link>
         ))}
       </div>
     </div>

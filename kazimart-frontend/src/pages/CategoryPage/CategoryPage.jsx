@@ -34,7 +34,7 @@ const CategoryPage = () => {
       </div>
 
       {/* Product Cards */}
-      <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-6 gap-4">
+      <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-5 gap-4">
         {filteredProducts?.map((product) => (
           <Item key={product.id} item={product} />
         ))}

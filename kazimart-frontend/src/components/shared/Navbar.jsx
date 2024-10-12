@@ -1,4 +1,4 @@
-import logo from '../../assets/kazimart.png'
+import logo from "../../assets/kazimart.png";
 import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { FaRegHeart, FaRegUser } from "react-icons/fa";
@@ -114,18 +114,18 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar">
+    <div className="navbar bg-white shadow-2xl  px-8">
       <div className="navbar-start">
         <div className="dropdown lg:hidden">
-          <button 
-            onClick={toggleMenu} 
-            className="btn btn-ghost" 
+          <button
+            onClick={toggleMenu}
+            className="btn btn-ghost p-2 hover:bg-gray-100 rounded-md"
             aria-haspopup="true"
             aria-expanded={menuOpen}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-6 w-6"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -140,7 +140,7 @@ const Navbar = () => {
           </button>
           {menuOpen && (
             <ul
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-10 p-4 shadow-lg bg-white rounded-lg w-52"
               onMouseLeave={() => setMenuOpen(false)}
             >
               {navlinks}
@@ -148,30 +148,39 @@ const Navbar = () => {
           )}
         </div>
         <Link to="/">
-        <img
-            className="w-32"
-            alt="" src={logo}
+          <img
+            className="w-32 transition-transform duration-300 hover:scale-105"
+            alt="Logo"
+            src={logo}
           />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu-horizontal px-1 text-lg">{navlinks}</ul>
+        <ul className="menu-horizontal px-4 space-x-6 text-lg font-medium text-gray-700 hover:text-[#FF9923] transition-colors duration-200">
+          {navlinks}
+        </ul>
       </div>
       <div className="navbar-end">
-        <div className="flex gap-6 text-[22px] text-[#FF9923]">
-          <FaRegHeart />
-          <FiShoppingCart />
+        <div className="flex items-center gap-6 text-[22px] text-[#FF9923]">
+          <FaRegHeart className="cursor-pointer hover:text-red-500 transition-colors duration-200" />
+          <FiShoppingCart className="cursor-pointer hover:text-green-500 transition-colors duration-200" />
           {user ? (
-            <div className="relative inline-block text-left" onClick={toggleLogout}>
+            <div
+              className="relative inline-block text-left"
+              onClick={toggleLogout}
+            >
               <img
                 src={user.photoURL}
                 alt="User"
-                className="h-8 w-8 rounded-full cursor-pointer"
+                className="h-8 w-8 rounded-full cursor-pointer shadow-md hover:shadow-lg transition-shadow duration-200"
               />
               {showLogout && (
                 <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                   <div className="py-1">
-                    <a onClick={handleLogOut} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer">
+                    <a
+                      onClick={handleLogOut}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer"
+                    >
                       Logout
                     </a>
                   </div>
@@ -179,7 +188,10 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <Link to="/login" className="text-[22px] text-[#FF9923]">
+            <Link
+              to="/login"
+              className="text-[22px] text-[#FF9923] hover:text-[#FF9923]/80 transition-colors duration-200"
+            >
               <FaRegUser />
             </Link>
           )}

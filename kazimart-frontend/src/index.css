@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 .font-nsw {
-    font-family: "Playwrite AU NSW", cursive;
-  }
-  
+  font-family: "Playwrite AU NSW", cursive;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif; 
+}

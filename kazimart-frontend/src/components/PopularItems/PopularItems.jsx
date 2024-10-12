@@ -1,23 +1,14 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../shared/SectionTitle";
 import Item from "../shared/Item";
+import useProducts from "../../hooks/useProducts";
 
 const PopularItems = () => {
-  const [items, setItems] = useState([]);
+  const [items] = useProducts();
+  const popularItems = items.filter((item) =>
+    item.category.includes("popular")
+  );
 
-  useEffect(() => {
-    fetch("products.json")
-      .then((res) => res.json())
-      .then((data) => {
-        const popularItems = data.filter((item) =>
-          item.category.includes("popular")
-        );
-        setItems(popularItems);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
-  }, []);
-
-  console.log(items);
+  console.log(popularItems);
 
   return (
     <div>
@@ -26,7 +17,7 @@ const PopularItems = () => {
         subHeading="We provide the best quality & fresh items near your location"
       />
       <div className="max-w-[1400px] mx-auto grid grid-cols-2 md:grid-cols-6 gap-4">
-        {items.map((item) => (
+        {popularItems.map((item) => (
           <Item key={item.id} item={item} />
         ))}
       </div>
